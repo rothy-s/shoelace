@@ -633,7 +633,10 @@ export default class SlCarousel extends ShoelaceElement {
                       id="tab-${index + 1}"
                       aria-controls="slide-${index + 1}"
                       aria-selected="${isActive ? 'true' : 'false'}"
-                      aria-label="${this.localize.term('goToSlide', index + 1, pagesCount)}"
+                      ${isActive
+                        ? ''
+                        : `aria-label="${this.localize.term('goToSlide', index + 1)}"`
+                      }
                       tabindex=${isActive ? '0' : '-1'}
                       @click=${() => this.goToSlide(index * slidesPerMove)}
                       @keydown=${this.handleKeyDown}
